@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IPA 2 preparation · Busco a alguien que… · SPAN 2102</title>
+<style>
+:root{
+  --ink:#14213D; --blue:#2A6F97; --blue-pale:#F2F8FB; --blue-line:#C9D6E0;
+  --green:#4F7A2E; --green-pale:#F4F7F0; --green-line:#D5E0C8;
+  --gold-pale:#FFF8E6; --gold-line:#E8D9A8; --muted:#4A5A6A;
+  --red:#9B2C2C; --red-pale:#FDF1F1; --red-line:#E6C3C3;
+}
+*{box-sizing:border-box}
+body{margin:0;background:#EEF2F5;color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  line-height:1.6;font-size:16px;}
+.wrap{max-width:860px;margin:0 auto;padding:18px 20px 60px;background:#fff;min-height:100vh}
+.tools{position:sticky;top:0;z-index:20;background:#fff;border:1px solid var(--blue-line);border-radius:8px;
+  padding:9px 12px;margin:0 0 16px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.tools button,.tools a.btn{font:inherit;font-size:14.5px;cursor:pointer;border:1px solid var(--blue-line);background:#F7FAFC;
+  color:var(--ink);border-radius:6px;padding:7px 13px;text-decoration:none}
+.tools button:hover,.tools a.btn:hover{background:var(--blue-pale);border-color:var(--blue)}
+button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.saved{font-size:13px;color:var(--muted);margin-left:auto}
+.hero{border-left:6px solid var(--blue);padding:18px 22px;background:var(--blue-pale);border-radius:0 6px 6px 0;margin:0 0 18px}
+.hero h1{margin:0 0 6px;font-size:26px;line-height:1.25}
+.hero p{margin:0;font-size:15px;color:var(--blue);font-weight:600}
+.hero p.sub{font-weight:400;color:var(--muted);margin-top:4px}
+h2{font-size:21px;margin:30px 0 10px;padding-top:14px;border-top:2px solid var(--blue-line)}
+h3{font-size:17px;margin:20px 0 8px}
+a{color:var(--blue)}
+.box-blue,.card.b{padding:14px 16px;background:var(--blue-pale);border-left:4px solid var(--blue);border-radius:0 6px 6px 0;margin:0 0 16px}
+.box-green,.card.g{padding:14px 16px;background:var(--green-pale);border:1px solid var(--green-line);border-radius:6px;margin:0 0 16px}
+.box-gold,.card.v{padding:14px 16px;background:var(--gold-pale);border:1px solid var(--gold-line);border-radius:6px;margin:0 0 16px}
+.card p,.box-gold p,.box-green p,.box-blue p{margin:0 0 8px}
+.card p:last-child,.box-gold p:last-child,.box-green p:last-child,.box-blue p:last-child{margin:0}
+table{width:100%;border-collapse:collapse;font-size:15px;margin:0 0 16px}
+th{border:1px solid var(--blue-line);background:#EDF3F7;padding:9px;text-align:left}
+td{border:1px solid var(--blue-line);padding:7px 9px;vertical-align:top}
+ol,ul{margin:0 0 14px;padding-left:24px}
+li{margin-bottom:10px}
+.gloss{color:var(--muted);font-size:14.5px;font-style:italic}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:660px){.two{grid-template-columns:1fr}}
+.vi{color:var(--blue)} .vs{color:var(--green)} .vf{border-bottom:2px solid var(--gold-line)}
+.m{display:inline-block;font-size:12.5px;font-weight:700;padding:0 9px;border-radius:12px;border:1px solid var(--blue-line);white-space:nowrap}
+.m.ind{background:var(--blue-pale);border-color:var(--blue);color:var(--blue)}
+.m.sub{background:var(--green-pale);border-color:var(--green);color:var(--green)}
+.m.inf{background:var(--gold-pale);border-color:var(--gold-line);color:var(--ink)}
+.m.dep{background:#fff;color:var(--muted)}
+.legend{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 14px}
+input.f,select.f{font:inherit;color:var(--ink);background:#FFFDF5;border:none;border-bottom:2px solid var(--gold-line);
+  padding:2px 6px;min-width:100px;width:140px;border-radius:3px 3px 0 0}
+select.f{width:auto;min-width:110px;border:1px solid var(--gold-line);border-bottom-width:2px;padding:2px 4px}
+input.f:focus,select.f:focus{outline:none;background:#FFF6D9;border-bottom-color:var(--blue)}
+input.f.wide{width:100%}
+.f.ok{background:var(--green-pale)!important;border-bottom-color:var(--green)!important}
+.f.no{background:var(--red-pale)!important;border-bottom-color:var(--red)!important}
+.f.near{background:#FFF1C2!important;border-bottom-color:#B8963A!important}
+textarea.f{font:inherit;color:var(--ink);background:#FFFDF5;border:1px solid var(--gold-line);border-radius:6px;
+  width:100%;padding:9px 11px;min-height:80px;resize:vertical;display:block;margin:6px 0 0}
+textarea.f:focus{outline:none;background:#FFF6D9;border-color:var(--blue)}
+.act{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 10px}
+.act button,button.timer{font:inherit;font-size:14.5px;cursor:pointer;border:1px solid var(--green-line);background:var(--green-pale);
+  color:var(--ink);border-radius:6px;padding:7px 13px}
+.act button:hover,button.timer:hover{border-color:var(--green)}
+button.timer{margin:0 0 12px;border-radius:20px;padding:5px 14px;font-size:14px}
+button.timer.run{background:var(--gold-pale);border-color:var(--gold-line)}
+button.timer.done{background:var(--red-pale);border-color:var(--red);font-weight:700}
+.verdict{font-size:15px;color:var(--muted);margin:0 0 14px;min-height:1.3em}
+.hid{display:none}
+.hid.on{display:block}
+.pick{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:0 0 12px;padding-bottom:10px;border-bottom:1px dashed var(--blue-line)}
+.pick .txt{flex:1 1 300px}
+.pick button{font:inherit;font-size:14px;cursor:pointer;border:1px solid var(--blue-line);background:#F7FAFC;
+  border-radius:20px;padding:5px 14px;color:var(--ink)}
+.pick button:hover{border-color:var(--blue);background:var(--blue-pale)}
+.pick button.ok{background:var(--green-pale);border-color:var(--green)}
+.pick button.no{background:var(--red-pale);border-color:var(--red)}
+.pick .mark{font-size:14px;color:var(--muted);flex:1 1 220px}
+.qscore{font-size:14.5px;color:var(--muted);margin:0 0 14px}
+figure{margin:0 0 18px;text-align:center}
+figure svg{max-width:100%;height:auto}
+figcaption{font-size:14px;color:var(--muted);margin-top:6px}
+svg text{fill:var(--ink)}
+svg .ts{font-size:15px;fill:var(--muted)} svg .tm{font-size:19px} svg .tb{font-size:20px;font-weight:700}
+svg .tv-i{font-size:23px;font-weight:700;fill:var(--blue)} svg .tv-s{font-size:23px;font-weight:700;fill:var(--green)}
+svg .tv-f{font-size:21px;font-weight:700}
+svg .ti{fill:var(--blue);font-weight:700;font-size:19px} svg .tg{fill:var(--green);font-weight:700;font-size:19px}
+svg .z-i{fill:var(--blue-pale)} svg .z-s{fill:var(--green-pale)}
+svg .l-i{stroke:var(--blue);stroke-width:5;fill:none;stroke-linecap:round}
+svg .l-s{stroke:var(--green);stroke-width:5;fill:none;stroke-dasharray:3 11;stroke-linecap:round}
+svg .l-h{stroke:var(--ink);stroke-width:2;stroke-dasharray:5 5}
+svg .d-i{fill:var(--blue)} svg .d-s{fill:#fff;stroke:var(--green);stroke-width:4}
+svg .bx{fill:#fff;stroke:var(--muted);stroke-width:2}
+svg .bx-i{fill:var(--blue-pale);stroke:var(--blue);stroke-width:2.5}
+svg .bx-s{fill:var(--green-pale);stroke:var(--green);stroke-width:2.5}
+svg .bx-f{fill:var(--gold-pale);stroke:#B8963A;stroke-width:2.5}
+svg .ar{stroke:var(--muted);stroke-width:2.5;fill:none}
+.switch{border:1px solid var(--blue-line);border-radius:8px;padding:14px 16px;margin:0 0 16px}
+.sw-ctl{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 12px}
+.sw-ctl button,.sw-next{font:inherit;font-size:14px;cursor:pointer;border:1px solid var(--blue-line);background:#F7FAFC;
+  border-radius:20px;padding:5px 14px;color:var(--ink)}
+.switch[data-state=a] [data-set=a]{background:var(--blue-pale);border-color:var(--blue);font-weight:700}
+.switch[data-state=b] [data-set=b]{background:var(--green-pale);border-color:var(--green);font-weight:700}
+.sw-ex{display:none}.sw-ex.cur{display:block}
+.switch[data-state=a] [data-for=b],.switch[data-state=b] [data-for=a]{display:none}
+.sw-sent{margin:0 0 6px;padding:12px 16px;font-size:18px;border-radius:0 6px 6px 0}
+.switch[data-state=a] .sw-sent{background:var(--blue-pale);border-left:4px solid var(--blue)}
+.switch[data-state=b] .sw-sent{background:var(--green-pale);border-left:4px solid var(--green)}
+.sw-note{margin:0 0 10px;font-size:14.5px;color:var(--muted)}
+details.model{margin:6px 0 0;font-size:14.5px}
+details.model summary{cursor:pointer;color:var(--green)}
+details.model p{margin:6px 0 0;padding:8px 12px;background:var(--green-pale);border:1px solid var(--green-line);border-radius:6px}
+.answer-print{display:none}
+.nextprev{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:18px 0 0}
+.nextprev a{font-size:15px}
+.topics{display:grid;gap:12px;margin:0 0 18px}
+a.topic{display:block;text-decoration:none;color:var(--ink);padding:14px 16px;background:var(--blue-pale);border-left:4px solid var(--blue);border-radius:0 6px 6px 0}
+a.topic:hover{background:#E6F1F7}
+a.topic h3{margin:0 0 4px;color:var(--blue)}
+a.topic p{margin:0 0 6px}
+footer{border-top:2px solid var(--blue);padding-top:14px;margin-top:30px;font-size:14.5px;color:var(--muted)}
+@media print{
+  body{background:#fff;font-size:11.5pt}
+  .wrap{max-width:none;padding:0}
+  .tools,.act,.pick button,button.timer,.sw-ctl,.sw-next,.nextprev{display:none}
+  .hid{display:none}.hid.on{display:block}
+  input.f,select.f{background:transparent;border-bottom:1px solid #666}
+  textarea.f{display:none}
+  .answer-print{display:block;white-space:pre-wrap;border-bottom:1px solid #999;min-height:42px;margin:6px 0 0}
+  details.model:not([open]){display:none}
+  h2{page-break-after:avoid}
+  .box-blue,.box-green,.box-gold,.card,.hero,svg,.m{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  figure svg{max-height:7cm}
+}
+
+.plan td:first-child{white-space:nowrap;font-weight:700}
+.cardbig{border:2px solid var(--blue);border-radius:10px;padding:18px 20px;margin:0 0 14px;background:#fff;text-align:center}
+.cardbig .w{font-size:30px;font-weight:700;color:var(--blue);margin:0 0 8px}
+.cardbig .no{font-size:15px;color:var(--red);margin:0}
+.cardbig.hide .w,.cardbig.hide .no{filter:blur(9px);user-select:none}
+.big{font-size:22px;font-weight:700;margin:0 0 10px}
+.score{display:inline-block;min-width:2.2em;text-align:center;font-weight:700;border:1px solid var(--green-line);background:var(--green-pale);border-radius:12px;padding:0 10px}
+.picker{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 12px}
+.picker button,.role button,.mini{font:inherit;font-size:14px;cursor:pointer;border:1px solid var(--blue-line);background:#F7FAFC;border-radius:20px;padding:5px 14px;color:var(--ink)}
+.picker button.on,.role button.on{background:var(--blue-pale);border-color:var(--blue);font-weight:700}
+.role{display:flex;gap:6px;margin:0 0 12px;flex-wrap:wrap}
+.scene h3{margin:0 0 6px}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:660px){.cols{grid-template-columns:1fr}}
+.target{display:inline-block;margin:0 8px 6px 0;padding:3px 10px;border:1px solid var(--blue);background:var(--blue-pale);border-radius:14px;font-weight:700;color:var(--blue)}
+.ck label{display:block;margin:0 0 6px;cursor:pointer}
+.copyrow{display:flex;gap:8px;align-items:center;margin:0 0 6px;flex-wrap:wrap}
+pre.prompt{white-space:pre-wrap;font:inherit;background:#F7FAFC;border:1px solid var(--blue-line);border-radius:6px;padding:12px 14px;margin:0 0 10px}
+details.cfg{border:1px solid var(--blue-line);border-radius:8px;padding:10px 14px;margin:0 0 16px}
+details.cfg summary{cursor:pointer;font-weight:700}
+@media print{.picker,.role,.mini{display:none}.cardbig.hide .w,.cardbig.hide .no{filter:none}}
+</style>
+</head>
+<body data-page="busco-alguien">
+<div class="wrap">
+
+<div class="tools">
+  <button type="button" id="print">Print / PDF</button>
+  <button type="button" id="clear">Reset all</button>
+  <span class="saved" id="saved">Works on a phone: one team, one phone</span>
+</div>
+
+<div class="hero">
+  <p>IPA 2 preparation &middot; Capítulo 16: relaciones y etapas de la vida</p>
+  <h1>Busco a alguien que…: three rounds to speak without notes</h1>
+  <p class="sub">Tabú · Busco a alguien que… · Una vida en cuatro frases · One homework recording</p>
+</div>
+
+<div class="box-gold">
+  <p><strong>Plan (about 25 minutes in class, then homework).</strong> Everything is done seated, in teams of four. The directions are in English; <strong>everything you say is in Spanish.</strong> Speak, don't write.</p>
+</div>
+<table class="plan">
+  <tr><th style="width:18%">When</th><th>What you do</th><th style="width:34%">How it helps</th></tr>
+  <tr><td>4 min</td><td>Warm-up: which word fits? (click)</td><td>Wakes up the vocabulary of relationships and life stages.</td></tr>
+  <tr><td>8 min</td><td>Round 1 · Tabú</td><td>Explain a word with other words. If you forget a word, you talk around it.</td></tr>
+  <tr><td>8 min</td><td>Round 2 · Busco a alguien que…</td><td>The IPA 2 rotation: who exists, who doesn't, and conditions.</td></tr>
+  <tr><td>5 min</td><td>Round 3 · Una vida en cuatro frases</td><td>The four parts of the Cap. 16 presentation, one sentence each.</td></tr>
+  <tr><td>Homework</td><td>One short recording</td><td>Parts 3 and 4 of the Cap. 16 presentation, without notes.</td></tr>
+</table>
+
+<h2 style="border-top:none;padding-top:0">1 · Warm-up: ¿qué palabra falta?</h2>
+<p><strong>Click the word that completes each sentence.</strong> <span class="gloss">The page tells you why. Read each sentence aloud in Spanish.</span></p>
+<div class="pickset" id="warm"></div>
+
+<h2>2 · Round 1 · Tabú</h2>
+<p><strong>One team, one phone.</strong> One person taps <em>New card</em>, looks at the word, and explains it <strong>in Spanish without saying the word or the three forbidden words</strong>. The others guess. If you don't know how to explain it, talk around it: <em>Es algo que se usa para…</em> / <em>Es una persona que…</em> / <em>Es la etapa de la vida en que…</em></p>
+<div class="box-blue"><p style="margin:0"><strong>Two bonus points</strong> for a clue with <em>alguien / algo que</em> + verb. The guessers can ask: <em>¿Es una persona que tenga…?</em> <span class="gloss">(unknown antecedent → subjunctive, Cap. 16)</span></p></div>
+<button type="button" class="timer" data-sec="60"></button>
+<div class="cardbig hide" id="tcard"><p class="w" id="tw">—</p><p class="no" id="tno">Tap “New card”</p></div>
+<div class="act">
+  <button type="button" id="tnew">New card</button>
+  <button type="button" id="tshow">Show / hide</button>
+  <button type="button" id="tok">✓ Guessed it (+1)</button>
+  <button type="button" id="textra">★ Clue with “que” (+2)</button>
+  <button type="button" id="treset">Reset score</button>
+</div>
+<p>Team score: <span class="score" id="tscore">0</span> <span class="gloss">&nbsp;When time is up, the team with the most points wins. Use the 60-second timer for each turn.</span></p>
+
+<h2>3 · Round 2 · Busco a alguien que…</h2>
+<p><strong>In pairs.</strong> Pick the same scene number but different roles, and <strong>do not show your card</strong>: tell your partner the information in Spanish. <strong>A</strong> is looking for someone and doesn't know who exists: ask <em>¿Conoces a alguien que…?</em> <strong>B</strong> knows two real people and describes them: <em>Conozco a una persona que…</em> At the end, decide together: whom should A meet, and under what conditions?</p>
+<div class="picker" id="scenepick"></div>
+<div class="role" id="rolepick">
+  <button type="button" data-r="A" class="on">I'm A (I look for someone)</button>
+  <button type="button" data-r="B">I'm B (I know two people)</button>
+  </div>
+<button type="button" class="timer" data-sec="420"></button>
+<div class="cols" id="scene"></div>
+<div class="box-green"><p style="margin:0"><strong>Watch the contrast.</strong> A, who doesn't know: <em>busco a alguien que <b class="vs">sea</b>…</em> B, who knows: <em>conozco a alguien que <b class="vi">es</b>…</em> <span class="gloss">Unknown → subjunctive; known → indicative.</span></p></div>
+<div class="box-green"><p style="margin:0"><strong>To decide, use at least two:</strong> <em>con tal de que…</em> &middot; <em>a menos que…</em> &middot; <em>en caso de que…</em> &middot; <em>para que…</em> &middot; <em>sin que…</em></p></div>
+
+<h2>4 · Round 3 · Una vida en cuatro frases</h2>
+<p><strong>Teams of four.</strong> The team gets a character in the middle of life and three vocabulary words. Each person adds <strong>one sentence</strong> in Spanish, one for each part of the life:</p>
+<ol>
+  <li><strong>La infancia:</strong> how life was. <em>Cuando era niño/a, …</em> <span class="gloss">(imperfect)</span></li>
+  <li><strong>La juventud:</strong> what happened. <em>A los veinte años, …</em> <span class="gloss">(preterite)</span></li>
+  <li><strong>La madurez:</strong> what the character looks for. <em>Ahora busca a alguien que…</em> <span class="gloss">(subjunctive)</span></li>
+  <li><strong>La vejez:</strong> what the character is going to do, and on what condition. <em>Va a… con tal de que…</em></li>
+</ol>
+<p>Each target word used meaningfully earns one point.</p>
+<button type="button" class="timer" data-sec="300"></button>
+<div class="box-blue" id="chain"><p style="margin:0" class="gloss">Tap “New character.”</p></div>
+<div class="act"><button type="button" id="cnew">New character</button></div>
+<div class="ck" id="cck"></div>
+<p>Points: <span class="score" id="cscore">0</span> <span class="gloss">&nbsp;One bonus point if all four stages were covered.</span></p>
+
+<h2>5 · Homework · One recording</h2>
+<p><strong>One recording, no reading.</strong> <span class="gloss">You will get the link in class. The directions are in English; you record in Spanish.</span></p>
+<h3>Busco a alguien que… (60–90 seconds)</h3>
+<pre class="prompt">Record a 60–90 second message in Spanish. Do not read: talk to the camera as if you were telling a classmate.
+
+You are speaking as a character in his or her middle years (madurez), invented or approved in advance. Tell us:
+
+1. Who is the character? Name, age, and one detail about his or her life now.
+2. What does the character look for and not find? Two sentences like: Busca a alguien que… / No hay nadie que… / Necesita un amigo que…
+3. What is the character going to do in old age (la vejez)? Use ir a + infinitive, and attach two conditions or purposes: con tal de que… / a menos que… / para que… / en caso de que…
+
+Use at least four words about relationships or stages of life (la pareja, el noviazgo, llevarse bien, romper con, la juventud, la madurez, la vejez…).</pre>
+<div class="box-green">
+  <p><strong>Before you submit, ask yourself:</strong></p>
+  <ul style="margin:0">
+    <li>Can a classmate understand me?</li>
+    <li>Did I say two things my character looks for and cannot find, with <em>que</em> + a verb?</li>
+    <li>Did I use <em>va a</em> + infinitive, and at least two conditions or purposes?</li>
+    <li>Did I keep talking with details, instead of stopping after one sentence?</li>
+  </ul>
+</div>
+
+<footer>
+  <p style="margin:0">SPAN 2102 &middot; Intermediate Spanish II &middot; Prof. Liliana Naranjo &middot; Fall 2026</p>
+</footer>
+
+</div>
+<script>
+
+(function(){
+  function $(s,r){return (r||document).querySelector(s);}
+  function $$(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s));}
+  function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');}
+  function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+
+  var REL=[
+    'la cita | salir, restaurante, novio',
+    'el noviazgo | novios, antes, boda',
+    'la boda | casarse, novia, fiesta',
+    'el matrimonio | casados, boda, esposo',
+    'la pareja | novio, amor, juntos',
+    'el divorcio | casados, separarse, juez',
+    'casarse | boda, esposo, anillo',
+    'enamorarse | amor, corazón, querer',
+    'romper con | novio, terminar, relación',
+    'llevarse bien | amigos, pelear, relación',
+    'la amistad | amigo, confianza, querer',
+    'la confianza | creer, seguro, amigo',
+    'la soledad | solo, nadie, triste',
+    'el esposo | casado, marido, boda',
+    'soltero | casado, pareja, solo',
+    'viudo | murió, esposa, casado',
+    'la niñez | niño, jugar, infancia',
+    'la adolescencia | joven, colegio, años',
+    'la juventud | joven, años, viejo',
+    'la madurez | adulto, viejo, años',
+    'la vejez | viejo, abuelo, años',
+    'jubilarse | trabajo, dejar, viejo',
+    'envejecer | viejo, años, tiempo',
+    'la luna de miel | boda, viaje, novios',
+    'comprometerse | anillo, boda, novio',
+    'los celos | novia, envidia, confiar',
+    'la media naranja | pareja, mitad, amor',
+    'el perfil | internet, foto, sitio'
+  ];
+  var vocab=[], deck=[];
+  function parseVocab(txt){
+    return txt.split('\n').map(function(l){return l.trim();}).filter(Boolean).map(function(l){
+      var p=l.split('|'); return {w:p[0].trim(), no:(p[1]||'').split(',').map(function(x){return x.trim();}).filter(Boolean)};
+    }).filter(function(x){return x.w;});
+  }
+
+  var WARM=[
+    ['Mi esposo y yo estamos ____ desde hace veinte años.','casados',['casados','solteros'],'Casados = married. Solteros = single.'],
+    ['Antes de la boda, la pareja tuvo un ____ de tres años.','noviazgo',['noviazgo','divorcio'],'El noviazgo is the courtship that comes before the wedding.'],
+    ['Mi abuelo se ____ a los 65 años y ya no trabaja.','jubiló',['jubiló','enamoró'],'Jubilarse = to retire.'],
+    ['Después de una discusión muy grande, Ana decidió ____ con su novio.','romper',['romper','casarse'],'Romper con = to break up with.'],
+    ['La ____ es la etapa de la vida después de la madurez.','vejez',['vejez','niñez'],'La vejez = old age; la niñez = childhood.'],
+    ['Mi mejor amiga y yo nos ____ muy bien.','llevamos',['llevamos','casamos'],'Llevarse bien = to get along well.'],
+    ['Un hombre que perdió a su esposa es ____.','viudo',['viudo','soltero'],'Viudo = widower.'],
+    ['El sitio web te pide un ____ con tus intereses y tus valores.','perfil',['perfil','divorcio'],'El perfil = the profile.']
+  ];
+  var warm=$('#warm');
+  WARM.forEach(function(it,n){
+    var row=document.createElement('div'); row.className='pick'; row.dataset.ans=it[1]; row.dataset.why=it[3];
+    row.innerHTML='<span class="txt">'+(n+1)+'. '+esc(it[0])+'</span>'+it[2].map(function(o){return '<button type="button" data-v="'+o+'">'+o+'</button>';}).join('')+'<span class="mark"></span>';
+    warm.appendChild(row);
+  });
+  warm.insertAdjacentHTML('beforeend','<p class="qscore"></p>');
+  $$('.pick',warm).forEach(function(row){
+    row.addEventListener('click',function(e){
+      var b=e.target; if(b.tagName!=='BUTTON') return;
+      var good=b.dataset.v===row.dataset.ans;
+      $$('button',row).forEach(function(x){x.classList.remove('ok','no');});
+      b.classList.add(good?'ok':'no');
+      $('.mark',row).textContent=(good?'✓ ':'✗ ')+row.dataset.why;
+      var rows=$$('.pick',warm), done=rows.filter(function(r){return $('button.ok',r);}).length;
+      $('.qscore',warm).textContent=done+' of '+rows.length+' solved';
+    });
+  });
+
+  var cur=null, tscore=0;
+  function showT(){ $('#tw').textContent=cur?cur.w:'—'; $('#tno').textContent=cur?('Don\'t say: '+cur.no.join(' · ')):'Tap “New card”'; }
+  $('#tnew').addEventListener('click',function(){ if(!deck.length) deck=shuffle(vocab); cur=deck.pop(); showT(); $('#tcard').classList.remove('hide'); });
+  $('#tshow').addEventListener('click',function(){$('#tcard').classList.toggle('hide');});
+  $('#tok').addEventListener('click',function(){tscore+=1;$('#tscore').textContent=tscore;});
+  $('#textra').addEventListener('click',function(){tscore+=2;$('#tscore').textContent=tscore;});
+  $('#treset').addEventListener('click',function(){tscore=0;$('#tscore').textContent=0;});
+
+  var SCENES=[
+    {city:'Medellín, Colombia',
+     a:'Eres Ricardo, tienes 52 años, eres profesor de historia y estás divorciado. Quieres jubilarte en ocho años y viajar por todo el continente. Buscas una persona que tenga ganas de viajar y que sea tranquila. No quieres a nadie que fume.',
+     b:'Conoces a dos personas. Marta tiene 49 años, es viuda y trabaja de bibliotecaria. Le encantan los libros y la música y es muy tranquila, pero nunca ha salido de Colombia y fuma de vez en cuando. Olga tiene 55 años, es soltera y es agente de viajes. Ha visitado treinta países, pero trabaja doce horas al día y siempre está cansada.'},
+    {city:'Santiago, Chile',
+     a:'Eres Paloma, tienes 45 años y eres ingeniera. Te mudaste a Santiago hace un mes y no conoces a nadie. Buscas amigos que hagan senderismo los fines de semana y que no cancelen los planes a última hora. No tienes auto.',
+     b:'Conoces dos grupos. El Club de Montaña sale cada sábado a las seis de la mañana, tiene diez personas y ya había organizado un viaje al Cajón del Maipo; todos tienen auto. El grupo de lectura se reúne los jueves por la noche y las personas son muy simpáticas, pero nadie hace senderismo y varios han cancelado la reunión tres veces.'},
+    {city:'Sevilla, España',
+     a:'Eres Gonzalo, tienes 60 años, eres chef y eres viudo desde hace tres años. Tienes dos hijos adultos que viven cerca. Buscas a alguien que sepa escuchar y que tenga paciencia. No quieres a una persona celosa.',
+     b:'Conoces a dos personas. Inés tiene 57 años, es divorciada y es maestra. Escucha mucho y es muy paciente, pero su exesposo era muy celoso y por eso prefiere una relación sin mucha familia cerca. Hugo tiene 62 años, es soltero y es músico. Es divertidísimo, pero casi nunca contesta el teléfono.'},
+    {city:'Lima, Perú',
+     a:'Eres Renata, tienes 40 años y eres cocinera. Quieres abrir un restaurante de comida peruana. Buscas un socio que tenga dinero para invertir y que sepa administrar. No puedes trabajar con nadie que llegue tarde.',
+     b:'Conoces a dos personas. Mateo tiene 44 años y es contador. Es muy puntual y organizado, pero no tiene dinero para invertir y nunca ha trabajado en un restaurante. Bruno tiene 50 años y es dueño de dos tiendas. Tiene mucho dinero y mucha experiencia, pero siempre llega tarde.'},
+    {city:'Ciudad de México, México',
+     a:'Eres Elena, tienes 55 años, eres doctora y estás divorciada. Tienes dos gatos que son parte de tu familia. Buscas una pareja que quiera vivir con gatos y que baile salsa los viernes.',
+     b:'Conoces a dos personas. Joaquín tiene 56 años, es ingeniero y es soltero. Baila salsa todos los viernes, pero es alérgico a los gatos. Esteban tiene 52 años, es maestro y está divorciado. Tiene dos gatos y adora a los animales, pero no baila y dice que la música lo pone nervioso.'},
+    {city:'Bogotá, Colombia',
+     a:'Eres Valeria, tienes 62 años y te jubilaste hace un año. Ahora sientes soledad por las tardes. Buscas amigos que quieran hacer actividades durante el día y que vivan cerca de tu casa.',
+     b:'Conoces dos opciones. Un club de jubilados se reúne cada mañana en el parque que está cerca de la casa de ella, pero casi todos tienen más de 75 años. Un taller de cerámica para adultos es los martes y jueves por la tarde y tiene personas de la edad de ella, pero queda a una hora en autobús.'}
+  ];
+  var sc=0, role='A';
+  var sp=$('#scenepick');
+  SCENES.forEach(function(s,i){
+    var b=document.createElement('button'); b.type='button'; b.textContent='Scene '+(i+1); if(i===0)b.classList.add('on');
+    b.addEventListener('click',function(){sc=i;$$('button',sp).forEach(function(x,k){x.classList.toggle('on',k===i);});drawScene();});
+    sp.appendChild(b);
+  });
+  $$('#rolepick button').forEach(function(b){
+    b.addEventListener('click',function(){role=b.dataset.r;$$('#rolepick button').forEach(function(x){x.classList.toggle('on',x===b);});drawScene();});
+  });
+  function drawScene(){
+    var s=SCENES[sc], h='';
+    if(role==='A') h+='<div class="box-blue scene"><h3>Card A · Who I am and whom I look for</h3><p class="gloss" style="margin:0 0 6px;font-style:normal">'+esc(s.city)+'</p><p style="margin:0">'+esc(s.a)+'</p></div>';
+    if(role==='B') h+='<div class="box-green scene"><h3>Card B · The people I know</h3><p class="gloss" style="margin:0 0 6px;font-style:normal">'+esc(s.city)+'</p><p style="margin:0">'+esc(s.b)+'</p></div>';
+    $('#scene').innerHTML=h;
+  }
+  drawScene();
+
+  var CHARS=['Ernesto, 58 años, cocinero','Carmen, 61 años, maestra','Rodrigo, 55 años, taxista','Beatriz, 57 años, doctora','Fernando, 63 años, carpintero','Adela, 54 años, periodista'];
+  $('#cnew').addEventListener('click',function(){
+    if(!vocab.length) return;
+    var ch=CHARS[Math.floor(Math.random()*CHARS.length)], t=shuffle(vocab).slice(0,3);
+    $('#chain').innerHTML='<p class="big" style="margin:0 0 8px">'+esc(ch)+'</p><p style="margin:0">'+t.map(function(x){return '<span class="target">'+esc(x.w)+'</span>';}).join('')+'</p>';
+    $('#cck').innerHTML=t.map(function(x,i){return '<label><input type="checkbox"> Used “'+esc(x.w)+'”</label>';}).join('')+'<label><input type="checkbox"> Bonus: all four stages were covered</label>';
+    $('#cscore').textContent=0;
+  });
+  $('#cck').addEventListener('change',function(){$('#cscore').textContent=$$('input:checked',$('#cck')).length;});
+
+
+
+
+  function fmt(s){return Math.floor(s/60)+':'+('0'+(s%60)).slice(-2);}
+  $$('.timer').forEach(function(t){
+    var total=parseInt(t.dataset.sec,10)||60, left=total, iv=null;
+    t.textContent='⏱ '+fmt(left)+' · tap to start';
+    t.addEventListener('click',function(){
+      if(iv){clearInterval(iv);iv=null;t.classList.remove('run');return;}
+      if(left<=0){left=total;t.classList.remove('done');}
+      t.classList.add('run');
+      iv=setInterval(function(){
+        left--; t.textContent='⏱ '+fmt(Math.max(0,left));
+        if(left<=0){clearInterval(iv);iv=null;t.classList.remove('run');t.classList.add('done');t.textContent='Time!';}
+      },1000);
+    });
+  });
+  $('#print').addEventListener('click',function(){window.print();});
+  $('#clear').addEventListener('click',function(){ if(confirm('Reset the scores and answers on this page?')) location.reload(); });
+  vocab=parseVocab(REL.join('\n'));
+})();
+
+</script>
+</body>
+</html>
